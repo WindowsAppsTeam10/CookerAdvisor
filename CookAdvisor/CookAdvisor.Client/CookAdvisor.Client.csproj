@@ -101,8 +101,10 @@
     <Compile Include="Common\GlobalConstants.cs" />
     <Compile Include="Helpers\BaseViewModel.cs" />
     <Compile Include="Helpers\DelegateCommand.cs" />
+    <Compile Include="Managers\ContentManager.cs" />
     <Compile Include="Managers\Contracts\ILocalDataManager.cs" />
     <Compile Include="Managers\Contracts\IRemoteDataManager.cs" />
+    <Compile Include="Managers\Contracts\IContentManager.cs" />
     <Compile Include="Managers\LocalDataManager.cs" />
     <Compile Include="Managers\RemoteDataManager.cs" />
     <Compile Include="Models\Recipes\RecipeListItemModel.cs" />

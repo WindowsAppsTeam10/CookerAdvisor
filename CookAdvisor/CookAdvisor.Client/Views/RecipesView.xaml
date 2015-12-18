@@ -8,20 +8,93 @@
     mc:Ignorable="d">
 
     <Page.Resources>
+        <Style x:Key="buttonStyle"
+               TargetType="Button">
+            <Setter Property="Background" Value="#e67e22" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="#e74c3c" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
         <DataTemplate x:Key="recipeItemTemplate">
-            <TextBlock Text="asd"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Border BorderThickness="7"
+                        BorderBrush="#e67e22">
+                    <Image Source="{Binding ImageUrl}"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           Grid.RowSpan="2"/>
+                </Border>
+                <TextBlock Text="{Binding Name}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Grid.Row="0"
+                           Grid.Column="1"/>
+                <TextBlock Text="{Binding Creator}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Grid.Row="1"
+                           Grid.Column="1" />
+            </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer Background="#e74c3c">
+        <StackPanel>
+            <TextBox PlaceholderText="Search"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Stretch"
+                         IsHitTestVisible="True"
+                         Grid.Row="0"
+                         Grid.Column="0"
+                         Margin="10"/>
+            
+            <Grid Grid.Row="1"
+                  Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding RecipeList}"
-                 ItemTemplate="{StaticResource recipeItemTemplate}"
-                 Grid.Row="1"
-                 Grid.Column="0" />
-    </Grid>
+                <Button Content="Products"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Click="OnProductsFilterClick"
+                                Style="{StaticResource buttonStyle}" />
+
+                <Button Content="Country"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Style="{StaticResource buttonStyle}" />
+
+                <Button Content="Name"
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Style="{StaticResource buttonStyle}" />
+
+                <Button Content="Liked"
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                Style="{StaticResource buttonStyle}" />
+            </Grid>
+
+            <ListBox ItemsSource="{Binding RecipeList}"
+                            ItemTemplate="{StaticResource recipeItemTemplate}"
+                            Background="#e74c3c"
+                            Foreground="White"
+                            Grid.Row="3"
+                            Grid.Column="0" />
+        </StackPanel>
+    </ScrollViewer>
 </Page>
