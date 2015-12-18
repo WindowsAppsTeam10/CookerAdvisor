@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace CookAdvisor.Models
+﻿namespace CookAdvisor.Models
 {
+    using System.Collections.Generic;
+
     public class Recipe
     {
         private ICollection<Product> products;

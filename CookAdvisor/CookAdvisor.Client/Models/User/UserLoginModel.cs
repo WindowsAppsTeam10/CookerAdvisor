@@ -6,7 +6,7 @@
 
         public string Password { get; set; }
 
-        public string Grant_type
+        public string grant_type
         {
             get
             {

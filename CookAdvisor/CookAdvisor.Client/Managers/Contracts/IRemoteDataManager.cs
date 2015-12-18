@@ -1,15 +1,18 @@
 ﻿namespace CookAdvisor.Client.Managers.Contracts
 {
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     public interface IRemoteDataManager
     {
-        Task<string> Get(string endPoint);
+        Task<HttpResponseMessage> Get(string endPoint);
 
-        Task<string> Post<T>(string endPoint, T data);
+        Task<HttpResponseMessage> Post<T>(string endPoint, T data);
 
-        Task<string> Put<T>(string endPoint, T data);
+        Task<HttpResponseMessage> PostAsUrlFormEncoded(string endPoint, string username, string password);
 
-        Task<string> Delete(string endPoint);
+        Task<HttpResponseMessage> Put<T>(string endPoint, T data);
+
+        Task<HttpResponseMessage> Delete(string endPoint);
     }
 }

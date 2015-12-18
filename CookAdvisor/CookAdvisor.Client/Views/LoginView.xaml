@@ -49,7 +49,7 @@
                    Style="{StaticResource TextStyle}"/>
 
         <TextBox Name="emailField"
-                 Text="{Binding LoginModel.Email, Mode=TwoWay}"
+                 Text="{Binding LoginModel.UserName, Mode=TwoWay}"
                  InputScope="EmailSmtpAddress"
                  Grid.Row="1"
                  Grid.Column="1"

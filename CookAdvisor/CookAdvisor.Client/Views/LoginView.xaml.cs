@@ -1,27 +1,29 @@
-﻿
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
-namespace CookAdvisor.Client
+﻿namespace CookAdvisor.Client
 {
+    using Common;
     using CookAdvisor.Client.ViewModels;
+    using Managers;
+    using Managers.Contracts;
+    using Models;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Threading.Tasks;
     using Windows.UI.Xaml.Controls;
 
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class LoginPage : Page
-    {   
+    {
         public LoginPage()
         {
             this.InitializeComponent();
-            this.ViewModel = new LoginViewModel();
+            this.ViewModel = new LoginPageViewModel();
         }
 
-        public LoginViewModel ViewModel
+        public LoginPageViewModel ViewModel
         {
-            get { return this.DataContext as LoginViewModel; }
+            get { return this.DataContext as LoginPageViewModel; }
             set { this.DataContext = value; }
         }
+
     }
 }
