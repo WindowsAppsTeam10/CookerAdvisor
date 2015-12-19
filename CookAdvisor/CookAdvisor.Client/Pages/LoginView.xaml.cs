@@ -1,6 +1,7 @@
 ﻿namespace CookAdvisor.Client
 {
     using CookAdvisor.Client.ViewModels;
+    using Pages;
     using Views;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
@@ -22,9 +23,9 @@
         private void LoginUser(object sender, RoutedEventArgs e)
         {
             var user = this.ViewModel.LoginModel;
-            user.UserName = "test@test.test";
+            user.Email = "test@test.test";
             user.Password = "123123";
-            Login(user.UserName, user.Password);
+            Login(user.Email, user.Password);
         }
 
         private async void Login(string username, string password)
@@ -39,5 +40,17 @@
                 //error
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddRecipePage));
+        }
+
+        private void RedirectToRegistration(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RegistrationPage));
+        }
+
+
     }
 }

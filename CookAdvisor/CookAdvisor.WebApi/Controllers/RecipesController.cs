@@ -4,6 +4,7 @@
     using Services;
     using Services.Contracts;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
 
     //[Authorize]
@@ -34,6 +35,24 @@
             }
 
             return this.Ok(result);
+        }
+
+        public IHttpActionResult Get(int id)
+        {
+            var recipe = this.recipeService.GetById(id);
+
+            var newRecipe = new SingleRecipeResponseModel
+            {
+                Id = recipe.Id,
+                Name = recipe.Name,
+                Country = recipe.Country.Name,
+                CreatorEmail = recipe.Creator.Email,
+                Description = recipe.Description,
+                ImageUrl = recipe.ImageUrl,
+                Products = recipe.Products.Select(p => p.Name).ToList()
+            };
+
+            return this.Ok(newRecipe);
         }
 
         public IHttpActionResult Post(AddRecipeRequestModel model)

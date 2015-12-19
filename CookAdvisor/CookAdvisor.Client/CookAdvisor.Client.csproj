@@ -99,29 +99,44 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\GlobalConstants.cs" />
+    <Compile Include="CustomViews\LabeledTextbox.xaml.cs">
+      <DependentUpon>LabeledTextbox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Data\IData.cs" />
     <Compile Include="Data\HttpServerData.cs" />
+    <Compile Include="Data\Models\Recipes\RecipeRequestModel.cs" />
     <Compile Include="Helpers\BaseViewModel.cs" />
     <Compile Include="Helpers\DelegateCommand.cs" />
     <Compile Include="Managers\Contracts\ILocalDataManager.cs" />
     <Compile Include="Data\IRemoteDataService.cs" />
     <Compile Include="Managers\LocalDataManager.cs" />
     <Compile Include="Data\RemoteDataService.cs" />
-    <Compile Include="Data\Models\Recipes\Recipe.cs" />
+    <Compile Include="Data\Models\Recipes\RecipeResponseModel.cs" />
     <Compile Include="Data\Models\User\UserLoginModel.cs" />
     <Compile Include="Data\Models\User\UserStorageModel.cs" />
+    <Compile Include="Pages\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AddRecipePage\AddRecipePageViewModel.cs" />
+    <Compile Include="ViewModels\AddRecipePage\AddRecipeViewModel.cs" />
     <Compile Include="ViewModels\Contracts\IContentViewModel.cs" />
     <Compile Include="ViewModels\Contracts\IPageViewModel.cs" />
-    <Compile Include="ViewModels\LoginPageViewModel.cs" />
-    <Compile Include="ViewModels\RecipesPageViewModel.cs" />
-    <Compile Include="ViewModels\RecipeViewModel.cs" />
-    <Compile Include="Views\LoginView.xaml.cs">
+    <Compile Include="ViewModels\LoginPage\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\AllRecipesPage\RecipesPageViewModel.cs" />
+    <Compile Include="ViewModels\AllRecipesPage\RecipeViewModel.cs" />
+    <Compile Include="Pages\AddRecipePage.xaml.cs">
+      <DependentUpon>AddRecipePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\RecipesView.xaml.cs">
+    <Compile Include="Pages\RecipesView.xaml.cs">
       <DependentUpon>RecipesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\LoginPage\UserLoginViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationPage\RegisterFormViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationPage\RegisterPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -144,11 +159,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\LoginView.xaml">
+    <Page Include="CustomViews\LabeledTextbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddRecipePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\RecipesView.xaml">
+    <Page Include="Pages\RecipesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,6 +1,8 @@
-﻿namespace CookAdvisor.Client.Models
+﻿using System.Collections.Generic;
+
+namespace CookAdvisor.Client.Models
 {
-    public class Recipe
+    public class RecipeResponseModel
     {
         public int Id { get; set; }
 
@@ -13,5 +15,7 @@
         public string Country { get; set; }
 
         public string Creator { get; set; }
+
+        public ICollection<string> Products { get; set; }
     }
 }

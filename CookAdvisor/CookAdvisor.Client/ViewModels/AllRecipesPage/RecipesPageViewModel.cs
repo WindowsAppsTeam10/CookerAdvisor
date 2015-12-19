@@ -1,11 +1,11 @@
 ﻿namespace CookAdvisor.Client.ViewModels
 {
-    using Common;
     using System.Linq;
     using Managers;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using Contracts;
+
     public class RecipesPageViewModel : IPageViewModel
     {
         private ObservableCollection<RecipeViewModel> recipeList;
@@ -13,7 +13,7 @@
 
         public RecipesPageViewModel()
         {
-            this.contentManager = new HttpServerData(new RemoteDataService(GlobalConstants.DefaultApiBaseAddress));
+            this.contentManager = new HttpServerData();
             this.Refresh();
         }
 

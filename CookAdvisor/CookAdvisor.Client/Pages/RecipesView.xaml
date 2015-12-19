@@ -50,9 +50,8 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    <ScrollViewer Background="#e74c3c"
-                  CanDrag="False">
-        <StackPanel CanDrag="False">
+    <ScrollViewer Background="#e74c3c">
+        <StackPanel>
             <TextBox PlaceholderText="Search"
                      Text="{Binding SearchFilter, Mode=TwoWay}"
                      VerticalAlignment="Top"
@@ -93,12 +92,13 @@
                                 Style="{StaticResource buttonStyle}" />
             </Grid>
 
-            <ListView x:Name="RecipesListView"  ItemsSource="{Binding RecipeList}"
-                            ItemTemplate="{StaticResource recipeItemTemplate}"
-                            Background="#e74c3c"
-                            Foreground="White"
-                            Grid.Row="3"
-                            Grid.Column="0" />
+            <ListView x:Name="RecipesListView"
+                      ItemsSource="{Binding RecipeList}"
+                      ItemTemplate="{StaticResource recipeItemTemplate}"
+                      Background="#e74c3c"
+                      Foreground="White"
+                      Grid.Row="3"
+                      Grid.Column="0" />
         </StackPanel>
     </ScrollViewer>
 </Page>

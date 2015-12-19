@@ -9,7 +9,7 @@
 
         Task<HttpResponseMessage> Post<T>(string endPoint, T data);
 
-        Task<HttpResponseMessage> PostAsUrlFormEncoded(string endPoint, string username, string password);
+        Task<HttpResponseMessage> PostAsUrlFormEncoded(string endPoint, string username, string password, string format);
 
         Task<HttpResponseMessage> Put<T>(string endPoint, T data);
 

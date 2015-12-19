@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CookAdvisor.Client"
+    xmlns:my="using:CookAdvisor.Client.CustomViews"
     xmlns:viewModels="using:CookAdvisor.Client.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -37,45 +38,53 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock Text="Cook Advisor." 
                        Grid.Row="0"
                        Grid.ColumnSpan="2"
                        Style="{StaticResource AppTitleStyle}" />
 
-        <TextBlock Text="Email:"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Style="{StaticResource TextStyle}"/>
+        <my:LabeledTextbox x:Name="emailField"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           IsPassword="False"
+                           UserInput="{Binding UserLoginViewModel.Email, Mode=TwoWay}"
+                           TextColor="White"
+                           VerticalAlignment="Center"
+                           Label="Email:" />
 
-        <TextBox Name="emailField"
-                 Text="{Binding LoginModel.UserName, Mode=TwoWay}"
-                 InputScope="EmailSmtpAddress"
-                 Grid.Row="1"
-                 Grid.Column="1"
-                 Margin="10"
-                 VerticalAlignment="Center" />
+        <my:LabeledTextbox x:Name="passwordField"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           IsPassword="True"
+                           UserInput="{Binding UserLoginViewModel.Password, Mode=TwoWay}"
+                           VerticalAlignment="Center"
+                           TextColor="White"
+                           Label="Password" />
 
-        <TextBlock Text="Password:"
-                   Grid.Row="2"
-                   Grid.Column="0"
-                   Style="{StaticResource TextStyle}"/>
-
-        <PasswordBox Name="passwordField"
-                     Grid.Row="2"
-                     Grid.Column="1"
-                     Margin="10"
-                     Password="{Binding LoginModel.Password, Mode=TwoWay}"
-                     VerticalAlignment="Center"/>
-
-        <Button Content="Get Cooking!"
+        <ItemsControl
                 Grid.Row="3"
-                Grid.Column="1"
+                Grid.Column="1">
+            <Button Content="Get Cooking!"
                 Margin="10"
                 HorizontalAlignment="Stretch"
                 Foreground="#ecf0f1"
                 VerticalAlignment="Top"
-                CommandParameter="{Binding LoginModel}"
+                CommandParameter="{Binding UserLoginViewModel}"
                 Click="LoginUser"/>
+            
+            <Button Content="No account?"
+                Margin="10"
+                HorizontalAlignment="Stretch"
+                Foreground="Yellow"
+                Click="RedirectToRegistration"/>
+        </ItemsControl>
+        
+        <Button Content="Add recipe"
+                Grid.Row="3"
+                Grid.Column="1"
+                Click="Button_Click"/>
     </Grid>
 </Page>

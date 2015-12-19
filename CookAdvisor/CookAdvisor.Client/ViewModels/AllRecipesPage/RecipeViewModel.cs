@@ -1,11 +1,10 @@
 ﻿namespace CookAdvisor.Client.ViewModels
 {
-    using Contracts;
     using CookAdvisor.Client.Models;
 
-    public class RecipeViewModel : IContentViewModel
+    public class RecipeViewModel
     {
-        public RecipeViewModel(Recipe recipe)
+        public RecipeViewModel(RecipeResponseModel recipe)
         {
             this.Name = recipe.Name;
             this.ImageUrl = recipe.ImageUrl;

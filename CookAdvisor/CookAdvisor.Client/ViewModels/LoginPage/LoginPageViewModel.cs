@@ -3,23 +3,21 @@
     using Helpers;
     using Managers;
     using Managers.Contracts;
-    using Models;
     using System.Windows.Input;
-    using Common;
     using System.Threading.Tasks;
     using Contracts;
+    using LoginPage;
+
     public class LoginPageViewModel : BaseViewModel, IPageViewModel
     {
-        private ICommand loginCommand;
         private IData data;
         private ILocalDataManager localClient;
 
-        private UserLoginModel userLoginModel;
+        private UserLoginViewModel userLoginModel;
 
         public LoginPageViewModel()
         {
-            this.userLoginModel = new UserLoginModel();
-            this.data = new HttpServerData(new RemoteDataService(GlobalConstants.DefaultApiBaseAddress));
+            this.data = new HttpServerData();
             this.localClient = new LocalDataManager();
         }
 
@@ -30,17 +28,20 @@
             {
                 return false;
             }
-            else
-            {
-                await this.localClient.InsertUserAsync(userInfo);
-                return true;
-            }
+
+            await this.localClient.InsertUserAsync(userInfo);
+            return true;
         }
 
-        public UserLoginModel LoginModel
+        public UserLoginViewModel LoginModel
         {
             get
             {
+                if (this.userLoginModel == null)
+                {
+                    this.userLoginModel = new UserLoginViewModel();
+                }
+
                 return this.userLoginModel;
             }
             set

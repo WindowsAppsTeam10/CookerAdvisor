@@ -5,12 +5,12 @@
     using System.Threading.Tasks;
     using Windows.Web.Http;
     using Newtonsoft.Json;
+    using Windows.Storage.Streams;
     public class RemoteDataService : IRemoteDataService
     {
-        private const string FormUrlEncodedFormat = "UserName={0}&Password={1}&Grant_type=password";
         private string baseAddress;
         private HttpClient client;
-
+        
         public RemoteDataService(string baseAddress)
         {
             client = new HttpClient();
@@ -36,10 +36,10 @@
             return response;
         }
 
-        public async Task<HttpResponseMessage> PostAsUrlFormEncoded(string endPoint, string username, string password)
+        public async Task<HttpResponseMessage> PostAsUrlFormEncoded(string endPoint, string username, string password, string format)
         {
-            var data = string.Format(FormUrlEncodedFormat, username, password);
-            var response = await client.PostAsync(new Uri(baseAddress + endPoint), new HttpStringContent(data));
+            var data = string.Format(format, username, password);
+            var response = await client.PostAsync(new Uri(baseAddress + endPoint), new HttpStringContent(data, UnicodeEncoding.Utf8, "application/x-www-form-urlencoded"));
             return response;
         }
 
