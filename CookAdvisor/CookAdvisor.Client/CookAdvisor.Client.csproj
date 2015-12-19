@@ -99,19 +99,22 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\GlobalConstants.cs" />
+    <Compile Include="Data\IData.cs" />
+    <Compile Include="Data\HttpServerData.cs" />
     <Compile Include="Helpers\BaseViewModel.cs" />
     <Compile Include="Helpers\DelegateCommand.cs" />
-    <Compile Include="Managers\ContentManager.cs" />
     <Compile Include="Managers\Contracts\ILocalDataManager.cs" />
-    <Compile Include="Managers\Contracts\IRemoteDataManager.cs" />
-    <Compile Include="Managers\Contracts\IContentManager.cs" />
+    <Compile Include="Data\IRemoteDataService.cs" />
     <Compile Include="Managers\LocalDataManager.cs" />
-    <Compile Include="Managers\RemoteDataManager.cs" />
-    <Compile Include="Models\Recipes\RecipeListItemModel.cs" />
-    <Compile Include="Models\User\UserLoginModel.cs" />
-    <Compile Include="Models\User\UserStorageModel.cs" />
+    <Compile Include="Data\RemoteDataService.cs" />
+    <Compile Include="Data\Models\Recipes\Recipe.cs" />
+    <Compile Include="Data\Models\User\UserLoginModel.cs" />
+    <Compile Include="Data\Models\User\UserStorageModel.cs" />
+    <Compile Include="ViewModels\Contracts\IContentViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\IPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\RecipesPageViewModel.cs" />
+    <Compile Include="ViewModels\RecipeViewModel.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>

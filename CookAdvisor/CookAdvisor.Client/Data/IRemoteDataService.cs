@@ -1,9 +1,9 @@
 ﻿namespace CookAdvisor.Client.Managers.Contracts
 {
-    using System.Net.Http;
     using System.Threading.Tasks;
+    using Windows.Web.Http;
 
-    public interface IRemoteDataManager
+    public interface IRemoteDataService
     {
         Task<HttpResponseMessage> Get(string endPoint);
 

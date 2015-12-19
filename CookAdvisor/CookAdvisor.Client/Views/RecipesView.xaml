@@ -19,8 +19,8 @@
         <DataTemplate x:Key="recipeItemTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="0.8*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -28,35 +28,39 @@
                 </Grid.RowDefinitions>
 
                 <Border BorderThickness="7"
-                        BorderBrush="#e67e22">
-                    <Image Source="{Binding ImageUrl}"
-                           Grid.Row="1"
-                           Grid.Column="0"
-                           Grid.RowSpan="2"/>
+                    BorderBrush="#e67e22">
+                    <Image Name="img" Source="{Binding ImageUrl}"
+                        Grid.Row="1"
+                        Width="150"
+                        Grid.Column="0"
+                        Grid.RowSpan="2"/>
+
                 </Border>
+
                 <TextBlock Text="{Binding Name}"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Grid.Row="0"
-                           Grid.Column="1"/>
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
                 <TextBlock Text="{Binding Creator}"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Grid.Row="1"
-                           Grid.Column="1" />
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Grid.Row="1"
+                        Grid.Column="1" />
             </Grid>
         </DataTemplate>
     </Page.Resources>
-
-    <ScrollViewer Background="#e74c3c">
-        <StackPanel>
+    <ScrollViewer Background="#e74c3c"
+                  CanDrag="False">
+        <StackPanel CanDrag="False">
             <TextBox PlaceholderText="Search"
-                         VerticalAlignment="Top"
-                         HorizontalAlignment="Stretch"
-                         IsHitTestVisible="True"
-                         Grid.Row="0"
-                         Grid.Column="0"
-                         Margin="10"/>
+                     Text="{Binding SearchFilter, Mode=TwoWay}"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Stretch"
+                     IsHitTestVisible="True"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Margin="10"/>
             
             <Grid Grid.Row="1"
                   Grid.Column="0">
@@ -89,7 +93,7 @@
                                 Style="{StaticResource buttonStyle}" />
             </Grid>
 
-            <ListBox ItemsSource="{Binding RecipeList}"
+            <ListView x:Name="RecipesListView"  ItemsSource="{Binding RecipeList}"
                             ItemTemplate="{StaticResource recipeItemTemplate}"
                             Background="#e74c3c"
                             Foreground="White"

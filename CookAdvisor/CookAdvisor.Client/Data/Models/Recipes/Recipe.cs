@@ -1,13 +1,17 @@
 ﻿namespace CookAdvisor.Client.Models
 {
-    public class RecipeListItemModel
+    public class Recipe
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
         public string ImageUrl { get; set; }
-        
+
+        public string Description { get; set; }
+
+        public string Country { get; set; }
+
         public string Creator { get; set; }
     }
 }

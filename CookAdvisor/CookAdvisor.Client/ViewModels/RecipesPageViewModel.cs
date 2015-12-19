@@ -1,29 +1,31 @@
 ﻿namespace CookAdvisor.Client.ViewModels
 {
     using Common;
-    using CookAdvisor.Client.Models;
+    using System.Linq;
     using Managers;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-
-    public class RecipesPageViewModel
+    using Contracts;
+    public class RecipesPageViewModel : IPageViewModel
     {
-        private ObservableCollection<RecipeListItemModel> recipeList;
-        private IContentManager contentManager;
+        private ObservableCollection<RecipeViewModel> recipeList;
+        private IData contentManager;
 
         public RecipesPageViewModel()
         {
-            this.contentManager = new ContentManager(new RemoteDataManager(GlobalConstants.DefaultApiBaseAddress));
+            this.contentManager = new HttpServerData(new RemoteDataService(GlobalConstants.DefaultApiBaseAddress));
             this.Refresh();
         }
 
-        public IEnumerable<RecipeListItemModel> RecipeList
+        public string SearchFilter { get; set; }
+
+        public IEnumerable<RecipeViewModel> RecipeList
         {
             get
             {
                 if (this.recipeList == null)
                 {
-                    this.recipeList = new ObservableCollection<RecipeListItemModel>();
+                    this.recipeList = new ObservableCollection<RecipeViewModel>();
                 }
 
                 return this.recipeList;
@@ -32,7 +34,7 @@
             {
                 if (this.recipeList == null)
                 {
-                    this.recipeList = new ObservableCollection<RecipeListItemModel>();
+                    this.recipeList = new ObservableCollection<RecipeViewModel>();
                 }
 
                 this.recipeList.Clear();
@@ -45,7 +47,8 @@
 
         private async void Refresh()
         {
-            this.RecipeList = await this.contentManager.GetRecipes(0, 10);
+            var result = await this.contentManager.GetRecipes(0, 10);
+            this.RecipeList = result.Select(m => new RecipeViewModel(m));
         }
     }
 }

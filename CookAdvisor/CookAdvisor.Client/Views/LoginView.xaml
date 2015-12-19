@@ -76,6 +76,6 @@
                 Foreground="#ecf0f1"
                 VerticalAlignment="Top"
                 CommandParameter="{Binding LoginModel}"
-                Command="{Binding LoginCommand}"/>
+                Click="LoginUser"/>
     </Grid>
 </Page>

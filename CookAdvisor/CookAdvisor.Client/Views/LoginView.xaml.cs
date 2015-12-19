@@ -1,14 +1,8 @@
 ﻿namespace CookAdvisor.Client
 {
-    using Common;
     using CookAdvisor.Client.ViewModels;
-    using Managers;
-    using Managers.Contracts;
-    using Models;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Net;
-    using System.Threading.Tasks;
+    using Views;
+    using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
 
     public sealed partial class LoginPage : Page
@@ -25,5 +19,25 @@
             set { this.DataContext = value; }
         }
 
+        private void LoginUser(object sender, RoutedEventArgs e)
+        {
+            var user = this.ViewModel.LoginModel;
+            user.UserName = "test@test.test";
+            user.Password = "123123";
+            Login(user.UserName, user.Password);
+        }
+
+        private async void Login(string username, string password)
+        {
+            var canLogin = await this.ViewModel.LoginUserSuccessful(username, password);
+            if (canLogin)
+            {
+                this.Frame.Navigate(typeof(RecipesView));
+            }
+            else
+            {
+                //error
+            }
+        }
     }
 }
