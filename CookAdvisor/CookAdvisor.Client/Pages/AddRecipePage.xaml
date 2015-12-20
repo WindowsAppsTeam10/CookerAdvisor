@@ -9,19 +9,12 @@
     mc:Ignorable="d">
 
     <Grid Background="#e67e22">
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-
-            <Image Source="asd"
+        <ItemsControl Margin="10">
+            <Viewbox>
+                <Image Source="asd"
                    Grid.Row="0"
                    Grid.Column="0"/>
+            </Viewbox>
             
             <my:LabeledTextbox Label="Name:"
                                Grid.Row="1"
@@ -32,8 +25,11 @@
                                VerticalAlignment="Center"/>
 
             <StackPanel Grid.Row="3">
-                <TextBlock Text="Describe your steps:" />
-                <RichEditBox />
+                <TextBlock Text="Describe your steps:" 
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+                <RichEditBox Height="150"/>
             </StackPanel>
 
             <my:LabeledTextbox Label="Products:"
@@ -44,6 +40,6 @@
                 <Button Content="Share recipe!"
                         Foreground="White"/>
             </Viewbox>
-        </Grid>
+        </ItemsControl>
     </Grid>
 </Page>

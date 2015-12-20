@@ -71,7 +71,58 @@
             control.textBoxInput.Text = e.NewValue.ToString();
             control.passwordBoxInput.Password = e.NewValue.ToString();
         }
-        
+
+
+
+        public GlyphVisibility HasGlyph
+        {
+            get { return (GlyphVisibility)GetValue(HasGlyphProperty); }
+            set { SetValue(HasGlyphProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HasGlyph.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HasGlyphProperty =
+            DependencyProperty.Register("HasGlyph", typeof(GlyphVisibility), typeof(LabeledTextbox), new PropertyMetadata(null, OnHasGlyphChanged));
+
+        private static void OnHasGlyphChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as LabeledTextbox;
+            var hasGlyph = (GlyphVisibility)e.NewValue;
+
+            if (hasGlyph == GlyphVisibility.Visible)
+            {
+                control.glyphButton.Visibility = Visibility.Visible;
+                control.passwordBoxInput.Margin = new Thickness(10, 10, 0, 10);
+                control.textBoxInput.Margin = new Thickness(10, 10, 0, 10);
+                control.passwordBoxInput.SetValue(Grid.ColumnSpanProperty, 1);
+                control.textBoxInput.SetValue(Grid.ColumnSpanProperty, 1);
+            }
+            else if (hasGlyph == GlyphVisibility.Collapsed)
+            {
+                control.glyphButton.Visibility = Visibility.Collapsed;
+                control.passwordBoxInput.Margin = new Thickness(20);
+                control.textBoxInput.Margin = new Thickness(10);
+                control.passwordBoxInput.SetValue(Grid.ColumnSpanProperty, 2);
+                control.textBoxInput.SetValue(Grid.ColumnSpanProperty, 2);
+            }
+        }
+
+        public string GlyphIcon
+        {
+            get { return (string)GetValue(GlyphIconProperty); }
+            set { SetValue(GlyphIconProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for GlyphIcon.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GlyphIconProperty =
+            DependencyProperty.Register("GlyphIcon", typeof(string), typeof(LabeledTextbox), new PropertyMetadata(null, OnGlyphIconChanged));
+
+        private static void OnGlyphIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as LabeledTextbox;
+            control.glyphButton.Content = e.NewValue.ToString();
+        }
+
         public bool IsPassword
         {
             get { return (bool)GetValue(IsPasswordProperty); }

@@ -51,6 +51,7 @@
                            IsPassword="False"
                            UserInput="{Binding UserLoginViewModel.Email, Mode=TwoWay}"
                            TextColor="White"
+                           HasGlyph="Collapsed"
                            VerticalAlignment="Center"
                            Label="Email:" />
 
@@ -59,6 +60,8 @@
                            Grid.Column="0"
                            Grid.ColumnSpan="2"
                            IsPassword="True"
+                           HasGlyph="Visible"
+                           GlyphIcon="&#xE700;"
                            UserInput="{Binding UserLoginViewModel.Password, Mode=TwoWay}"
                            VerticalAlignment="Center"
                            TextColor="White"
@@ -81,7 +84,7 @@
                 Foreground="Yellow"
                 Click="RedirectToRegistration"/>
         </ItemsControl>
-        
+
         <Button Content="Add recipe"
                 Grid.Row="3"
                 Grid.Column="1"
