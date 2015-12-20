@@ -4,42 +4,116 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CookAdvisor.Client.Views"
     xmlns:my="using:CookAdvisor.Client.CustomViews"
+    xmlns:viewModel="using:CookAdvisor.Client.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <CommonNavigationTransitionInfo/>
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
     <Grid Background="#e67e22">
-        <ItemsControl Margin="10">
-            <Viewbox>
-                <Image Source="asd"
-                   Grid.Row="0"
-                   Grid.Column="0"/>
-            </Viewbox>
+        <ScrollViewer>
+            <ScrollViewer.Resources>
+                <viewModel:AddRecipeViewModel x:Key="NewRecipe"/>
+                <viewModel:AddRecipePageViewModel x:Key="pageVM" />
+            </ScrollViewer.Resources>
             
-            <my:LabeledTextbox Label="Name:"
-                               Grid.Row="1"
-                               VerticalAlignment="Center"/>
+            <ItemsControl Margin="10"
+                          DataContext="{StaticResource NewRecipe}">
+                <Viewbox>
+                    <Image Name="imageView" 
+                        Source="{Binding ElementName=imageUrl, Path=Text, Mode=TwoWay}"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+                </Viewbox>
 
-            <my:LabeledTextbox Label="Image url:"
-                               Grid.Row="2"
-                               VerticalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Name:"/>
+                    <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="{Binding Name, Mode=TwoWay}" />
+                </Grid>
 
-            <StackPanel Grid.Row="3">
-                <TextBlock Text="Describe your steps:" 
-                           FontSize="25"
-                           FontWeight="Bold"
-                           Foreground="White"/>
-                <RichEditBox Height="150"/>
-            </StackPanel>
+                <Grid Grid.Row="1"
+                      Grid.Column="0"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="10*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Image url:"/>
+                        <TextBox Name="imageUrl" 
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             Text="{Binding ImageUrl, Mode=TwoWay}" />
+                    </Grid>
+                    <Viewbox
+                        Grid.Row="0"
+                        Grid.Column="1">
+                        <Button
+                            FontFamily="Segoe MDL2 Assets"
+                            Content="&#59170;"
+                            Background="Transparent"
+                            VerticalAlignment="Top"
+                            Foreground="White"
+                            Click="OnCameraClick"/>
+                    </Viewbox>
+                </Grid>
 
-            <my:LabeledTextbox Label="Products:"
-                               Grid.Row="4"
-                               VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="3">
+                    <TextBlock Text="Describe your steps:" 
+                               FontSize="25"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+                    <TextBox
+                        TextWrapping="Wrap"
+                        Text="{Binding Description, Mode=TwoWay}"
+                        AcceptsReturn="True"
+                        Height="150" />
+                </StackPanel>
 
-            <Viewbox Grid.Row="5">
-                <Button Content="Share recipe!"
-                        Foreground="White"/>
-            </Viewbox>
-        </ItemsControl>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Products:"/>
+                    <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="{Binding ProductsAsString, Mode=TwoWay}" />
+                </Grid>
+                <Viewbox Grid.Row="5"
+                         DataContext="{StaticResource pageVM}">
+                    <Button Content="Share recipe!"
+                            CommandParameter="{StaticResource NewRecipe}"
+                            Command="{Binding SaveCommand}"
+                            Foreground="White"/>
+                </Viewbox>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Page>

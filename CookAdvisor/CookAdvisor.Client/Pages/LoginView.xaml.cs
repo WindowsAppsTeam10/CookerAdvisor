@@ -1,11 +1,13 @@
 ﻿namespace CookAdvisor.Client
 {
+    using System;
     using CookAdvisor.Client.ViewModels;
     using Pages;
     using Views;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
-
+    using Windows.UI.Xaml.Navigation;
+    using Managers;
     public sealed partial class LoginPage : Page
     {
         public LoginPage()
@@ -23,8 +25,8 @@
         private void LoginUser(object sender, RoutedEventArgs e)
         {
             var user = this.ViewModel.LoginModel;
-            user.Email = "test@test.test";
-            user.Password = "123123";
+            user.Email = this.emailField.UserInput;
+            user.Password = this.passwordField.UserInput;
             Login(user.Email, user.Password);
         }
 
@@ -50,7 +52,5 @@
         {
             this.Frame.Navigate(typeof(RegistrationPage));
         }
-
-
     }
 }

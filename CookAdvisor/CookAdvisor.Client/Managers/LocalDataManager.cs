@@ -42,14 +42,22 @@
         public async Task<int> InsertUserAsync(UserStorageModel item)
         {
             var connection = this.GetDbConnectionAsync();
+            item.CreatedOn = DateTime.Now;
             var result = await connection.InsertAsync(item);
+            return result;
+        }
+
+        public async Task<int> DeleteAllUserInfo()
+        {
+            var connection = this.GetDbConnectionAsync();
+            var result = await connection.DeleteAllAsync<UserStorageModel>();
             return result;
         }
 
         public async Task<UserStorageModel> GetUserAsync()
         {
             var connection = this.GetDbConnectionAsync();
-            var result = await connection.Table<UserStorageModel>().OrderByDescending(e => e.Id).FirstOrDefaultAsync();
+            var result = await connection.Table<UserStorageModel>().OrderByDescending(e => e.CreatedOn).FirstOrDefaultAsync();
             return result;
         }
     }

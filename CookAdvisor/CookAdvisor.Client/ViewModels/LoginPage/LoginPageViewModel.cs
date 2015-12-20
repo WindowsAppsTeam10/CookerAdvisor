@@ -12,7 +12,6 @@
     {
         private IData data;
         private ILocalDataManager localClient;
-
         private UserLoginViewModel userLoginModel;
 
         public LoginPageViewModel()
@@ -32,7 +31,7 @@
             await this.localClient.InsertUserAsync(userInfo);
             return true;
         }
-
+        
         public UserLoginViewModel LoginModel
         {
             get

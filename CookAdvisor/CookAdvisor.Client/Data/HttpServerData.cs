@@ -51,7 +51,7 @@
         public async Task<bool> RegisterUser(string username, string password)
         {
             var response = await this.remoteClient.PostAsUrlFormEncoded(GlobalConstants.RegisterUserEndpoint, username, password, RegisterFormUrlEncodedFormat);
-            if (response.StatusCode == HttpStatusCode.Ok)
+            if (response.StatusCode == HttpStatusCode.Ok || response.StatusCode == HttpStatusCode.Created)
             {
                 return true;
             }

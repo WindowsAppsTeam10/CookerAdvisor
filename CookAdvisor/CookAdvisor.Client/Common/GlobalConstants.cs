@@ -19,5 +19,8 @@
         public const string AddNewRecipeEndpoint = "api/recipes";
         public const string UpdateRecipeEndpoint = "api/recipes";
         public const string DeleteRecipeByIdEndpoint = "/api/recipes/{0}";
+
+        //
+        public const string LocationBackgroundTaskName = "LocationBackgroundTask";
     }
 }

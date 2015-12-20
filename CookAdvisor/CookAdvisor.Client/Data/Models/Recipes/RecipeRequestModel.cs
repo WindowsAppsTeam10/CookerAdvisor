@@ -12,7 +12,7 @@
 
         public string Country { get; set; }
 
-        public string Creator { get; set; }
+        public string CreatorEmail { get; set; }
 
         public ICollection<string> Products { get; set; }
     }

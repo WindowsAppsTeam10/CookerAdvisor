@@ -32,7 +32,7 @@
         public async Task<HttpResponseMessage> Post<T>(string endPoint, T data)
         {
             var dataAsJson = JsonConvert.SerializeObject(data);
-            var response = await client.PostAsync(new Uri(baseAddress + endPoint), new HttpStringContent(dataAsJson));
+            var response = await client.PostAsync(new Uri(baseAddress + endPoint), new HttpStringContent(dataAsJson, UnicodeEncoding.Utf8, "application/json"));
             return response;
         }
 

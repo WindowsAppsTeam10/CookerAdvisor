@@ -4,10 +4,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CookAdvisor.Client"
     xmlns:my="using:CookAdvisor.Client.CustomViews"
-    xmlns:viewModels="using:CookAdvisor.Client.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <SlideNavigationTransitionInfo/>
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
 
     <Page.Resources>
         <Style x:Key="AppTitleStyle"
@@ -51,7 +60,6 @@
                            IsPassword="False"
                            UserInput="{Binding UserLoginViewModel.Email, Mode=TwoWay}"
                            TextColor="White"
-                           HasGlyph="Collapsed"
                            VerticalAlignment="Center"
                            Label="Email:" />
 
@@ -60,8 +68,6 @@
                            Grid.Column="0"
                            Grid.ColumnSpan="2"
                            IsPassword="True"
-                           HasGlyph="Visible"
-                           GlyphIcon="&#xE700;"
                            UserInput="{Binding UserLoginViewModel.Password, Mode=TwoWay}"
                            VerticalAlignment="Center"
                            TextColor="White"

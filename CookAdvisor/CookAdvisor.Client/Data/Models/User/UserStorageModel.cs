@@ -1,7 +1,7 @@
 ﻿namespace CookAdvisor.Client.Models
 {
     using SQLite.Net.Attributes;
-
+    using System;
     public class UserStorageModel
     {
         [PrimaryKey]
@@ -11,6 +11,8 @@
         public string Access_token { get; set; }
 
         public string UserName { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public override string ToString()
         {

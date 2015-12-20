@@ -98,8 +98,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BackgroundTasks\LocationBackgroundTask.cs" />
     <Compile Include="Common\GlobalConstants.cs" />
-    <Compile Include="CustomViews\GlyphVisibility.cs" />
     <Compile Include="CustomViews\LabeledTextbox.xaml.cs">
       <DependentUpon>LabeledTextbox.xaml</DependentUpon>
     </Compile>
