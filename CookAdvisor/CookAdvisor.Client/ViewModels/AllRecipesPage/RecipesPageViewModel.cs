@@ -16,9 +16,7 @@
             this.contentManager = new HttpServerData();
             this.Refresh();
         }
-
-        public string SearchFilter { get; set; }
-
+        
         public IEnumerable<RecipeViewModel> RecipeList
         {
             get

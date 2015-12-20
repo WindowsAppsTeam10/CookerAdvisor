@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
     using Contracts;
     using LoginPage;
-
+    using Notifications;
     public class LoginPageViewModel : BaseViewModel, IPageViewModel
     {
         private IData data;
@@ -25,9 +25,11 @@
             var userInfo = await this.data.LoginUser(username, password);
             if (userInfo == null)
             {
+                Notifier.ShowToast("ERROR!", "That info smells invalid.");
                 return false;
             }
 
+            Notifier.ShowToast("SUCCESS!", "You are now logged in!");
             await this.localClient.InsertUserAsync(userInfo);
             return true;
         }

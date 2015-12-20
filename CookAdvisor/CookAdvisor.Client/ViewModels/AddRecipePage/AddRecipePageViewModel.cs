@@ -5,6 +5,7 @@
     using Helpers;
     using Managers;
     using Managers.Contracts;
+    using Notifications;
     using System;
     using System.Collections.Generic;
     using System.Windows.Input;
@@ -49,6 +50,7 @@
                             newRecipe.ProductsAsString == string.Empty ||
                             string.IsNullOrWhiteSpace(newRecipe.ProductsAsString))
                         {
+                            Notifier.ShowToast("ERROR!", "Something doesn't seem right.");
                             return;
                         }
 
@@ -64,35 +66,12 @@
 
                         if (response != null)
                         {
-
+                            Notifier.ShowToast("SUCCESS!", "You just created a new recipe!");
                         }
                     });
                 }
                 return this.saveCommand;
             }
         }
-
-
-        //public async void GetLocation()
-        //{
-        //    foreach (var task in BackgroundTaskRegistration.AllTasks)
-        //    {
-        //        if (task.Value.Name == GlobalConstants.LocationBackgroundTaskName)
-        //        {
-        //            task.Value.Completed += new BackgroundTaskCompletedEventHandler(OnCompleted);
-        //            break;
-        //        }
-        //    }
-        //}
-        
-        //private void OnCompleted(IBackgroundTaskRegistration task, BackgroundTaskCompletedEventArgs args)
-        //{
-        //    //GetCountryName(args.CheckResult);
-        //}
-
-        //private string GetCountryName()
-        //{
-        //    return string.Empty;
-        //}
     }
 }

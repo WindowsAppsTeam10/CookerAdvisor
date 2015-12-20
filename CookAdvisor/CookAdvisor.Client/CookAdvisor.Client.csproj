@@ -115,6 +115,7 @@
     <Compile Include="Data\Models\Recipes\RecipeResponseModel.cs" />
     <Compile Include="Data\Models\User\UserLoginModel.cs" />
     <Compile Include="Data\Models\User\UserStorageModel.cs" />
+    <Compile Include="Notifications\Notifier.cs" />
     <Compile Include="Pages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
@@ -146,6 +147,7 @@
     <None Include="CookAdvisor.Client_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\logo.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

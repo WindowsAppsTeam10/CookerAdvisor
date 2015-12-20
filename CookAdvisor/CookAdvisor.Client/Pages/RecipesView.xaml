@@ -63,7 +63,7 @@
     <ScrollViewer Background="#e74c3c">
         <StackPanel>
             <TextBox PlaceholderText="Search"
-                     Text="{Binding SearchFilter, Mode=TwoWay}"
+                     Name="seachBox"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Stretch"
                      IsHitTestVisible="True"
@@ -83,7 +83,6 @@
                 <Button Content="Products"
                                 Grid.Row="0"
                                 Grid.Column="0"
-                                Click="OnProductsFilterClick"
                                 Style="{StaticResource buttonStyle}" />
 
                 <Button Content="Country"

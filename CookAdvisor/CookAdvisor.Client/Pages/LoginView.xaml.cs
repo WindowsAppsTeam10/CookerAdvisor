@@ -6,8 +6,7 @@
     using Views;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
-    using Windows.UI.Xaml.Navigation;
-    using Managers;
+    using Notifications;
     public sealed partial class LoginPage : Page
     {
         public LoginPage()
@@ -45,6 +44,7 @@
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Notifier.ShowToast("SUCCESS!", "You clicked this button.");
             this.Frame.Navigate(typeof(AddRecipePage));
         }
 

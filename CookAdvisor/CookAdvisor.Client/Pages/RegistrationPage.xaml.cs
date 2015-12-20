@@ -1,6 +1,8 @@
 ﻿namespace CookAdvisor.Client.Pages
 {
     using CookAdvisor.Client.ViewModels;
+    using Notifications;
+    using System.Text.RegularExpressions;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
 
@@ -22,38 +24,48 @@
         {
             // check for null
             var email = this.emailField.UserInput;
-            if (email == null)
+            if (email == string.Empty)
             {
-                //
+                Notifier.ShowToast("ERROR!", "We need your email!");
+                return;
             }
 
             var password = this.passwordField.UserInput;
-            if(password == null)
+            if(password == string.Empty)
             {
-                //
+                Notifier.ShowToast("ERROR!", "We need your password!");
+                return;
             }
 
             var confirmPassword = this.confirmPasswordField.UserInput;
-            if(confirmPassword == null)
+            if(confirmPassword == string.Empty)
             {
-                //
+                Notifier.ShowToast("ERROR!", "Please confirm that pass!");
+                return;
             }
 
+            if (!Regex.Match(email, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$").Success)
+            {
+                Notifier.ShowToast("ERROR!", "This ain't no email.");
+                return;
+            }
             // add email validation regex
             if (password != confirmPassword)
             {
-                // Show error
+                Notifier.ShowToast("ERROR!", "Passwords don't match.");
                 return;
             }
 
             var result = await this.ViewModel.RegisterUserSuccessful(email, password);
             if (result)
             {
+                Notifier.ShowToast("SUCCESS!", "You just became a cook!");
                 this.Frame.Navigate(typeof(LoginPage));
             }
             else
             {
-                // error
+                Notifier.ShowToast("ERROR!", "Registration failed :(");
+                return;
             }
         }
     }
