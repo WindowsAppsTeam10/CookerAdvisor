@@ -17,5 +17,6 @@
         </Style>
         <Style BasedOn="{StaticResource TextBlockStyle}" TargetType="TextBlock"/>
         <SolidColorBrush x:Key="GlobalBackground" Color="#e67e22" />
+        <SolidColorBrush x:Key="GlobalRedShadeColor" Color="#e74c3c" />
     </Application.Resources>
 </Application>

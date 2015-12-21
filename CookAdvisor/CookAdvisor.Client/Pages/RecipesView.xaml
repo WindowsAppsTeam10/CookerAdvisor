@@ -60,13 +60,13 @@
                     <TextBlock Text="{Binding Creator}"
                            Style="{StaticResource TextBlockStyle}"
                            FontSize="15"
-                           VerticalAlignment="Bottom"
+                           VerticalAlignment="Top"
                            HorizontalAlignment="Right" />
                 </Viewbox>
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    <ScrollViewer Background="#e74c3c">
+    <ScrollViewer Background="{StaticResource GlobalRedShadeColor}">
         <StackPanel>
             <TextBox PlaceholderText="Search"
                      Name="seachBox"
