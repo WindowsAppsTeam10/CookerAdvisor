@@ -20,14 +20,14 @@
     <Page.Resources>
         <Style x:Key="buttonStyle"
                TargetType="Button">
-            <Setter Property="Background" Value="#e67e22" />
+            <Setter Property="Background" Value="{StaticResource GlobalBackground}" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="BorderBrush" Value="#e74c3c" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
         <DataTemplate x:Key="recipeItemTemplate">
-            <Grid>
+            <Grid DoubleTapped="RecipeDoubleTapped" Tag="{Binding Id}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="0.8*"/>
@@ -43,20 +43,26 @@
                         Grid.Row="1"
                         Width="150"
                         Grid.Column="0"
-                        Grid.RowSpan="2"/>
+                        Grid.RowSpan="2">
+                    </Image>
 
                 </Border>
-
-                <TextBlock Text="{Binding Name}"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Left"
+                <Viewbox StretchDirection="DownOnly"
                         Grid.Row="0"
-                        Grid.Column="1"/>
-                <TextBlock Text="{Binding Creator}"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Left"
-                        Grid.Row="1"
-                        Grid.Column="1" />
+                        Grid.Column="1">
+                    <TextBlock Text="{Binding Name}"
+                        Style="{StaticResource TextBlockStyle}"
+                        VerticalAlignment="Top"/>
+                </Viewbox>
+                <Viewbox StretchDirection="DownOnly"
+                           Grid.Row="1"
+                           Grid.Column="1">
+                    <TextBlock Text="{Binding Creator}"
+                           Style="{StaticResource TextBlockStyle}"
+                           FontSize="15"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Right" />
+                </Viewbox>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -90,15 +96,18 @@
                                 Grid.Column="1"
                                 Style="{StaticResource buttonStyle}" />
 
-                <Button Content="Name"
+                <Button Content="Refresh"
                                 Grid.Row="0"
                                 Grid.Column="2"
+                                Click="RefreshEvent"
                                 Style="{StaticResource buttonStyle}" />
 
-                <Button Content="Liked"
-                                Grid.Row="0"
-                                Grid.Column="3"
-                                Style="{StaticResource buttonStyle}" />
+
+                <Button Content="Add new"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Click="Button_Click"
+                        Style="{StaticResource buttonStyle}"/>
             </Grid>
 
             <ListView x:Name="RecipesListView"

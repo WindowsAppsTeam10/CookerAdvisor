@@ -116,6 +116,9 @@
     <Compile Include="Data\Models\User\UserLoginModel.cs" />
     <Compile Include="Data\Models\User\UserStorageModel.cs" />
     <Compile Include="Notifications\Notifier.cs" />
+    <Compile Include="Pages\DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,8 @@
     <Compile Include="ViewModels\AddRecipePage\AddRecipeViewModel.cs" />
     <Compile Include="ViewModels\Contracts\IContentViewModel.cs" />
     <Compile Include="ViewModels\Contracts\IPageViewModel.cs" />
+    <Compile Include="ViewModels\DetailsPage\DetailRecipeViewModel.cs" />
+    <Compile Include="ViewModels\DetailsPage\DetailsPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPage\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\AllRecipesPage\RecipesPageViewModel.cs" />
     <Compile Include="ViewModels\AllRecipesPage\RecipeViewModel.cs" />
@@ -147,6 +152,7 @@
     <None Include="CookAdvisor.Client_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\loading.png" />
     <Content Include="Assets\logo.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -170,6 +176,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -181,6 +191,11 @@
     <Page Include="Pages\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\TextDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
   <ItemGroup>

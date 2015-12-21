@@ -36,16 +36,6 @@
             {
                 this.Frame.Navigate(typeof(RecipesView));
             }
-            else
-            {
-                //error
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Notifier.ShowToast("SUCCESS!", "You clicked this button.");
-            this.Frame.Navigate(typeof(AddRecipePage));
         }
 
         private void RedirectToRegistration(object sender, RoutedEventArgs e)

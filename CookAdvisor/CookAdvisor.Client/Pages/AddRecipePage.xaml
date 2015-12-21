@@ -19,7 +19,7 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Grid Background="#e67e22">
+    <Grid Background="{StaticResource GlobalBackground}">
         <ScrollViewer>
             <ScrollViewer.Resources>
                 <viewModel:AddRecipeViewModel x:Key="NewRecipe"/>
@@ -29,20 +29,23 @@
             <ItemsControl Margin="10"
                           DataContext="{StaticResource NewRecipe}">
                 <Viewbox>
-                    <Image Name="imageView" 
-                        Source="{Binding ElementName=imageUrl, Path=Text, Mode=TwoWay}"
-                       Grid.Row="0"
-                       Grid.Column="0"/>
+                    <Image Name="imageView"
+                            ImageFailed="imageView_ImageFailed"
+                            Source="{Binding ElementName=imageUrl, Path=Text, Mode=TwoWay}"
+                            Grid.Row="0"
+                            Grid.Column="0"/>
                 </Viewbox>
 
-                <Grid>
+                <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="10*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0"
-                               Grid.Column="0"
-                               Text="Name:"/>
+                    <Viewbox StretchDirection="DownOnly"
+                             Grid.Row="0"
+                             Grid.Column="0">
+                        <TextBlock Text="Name:"/>
+                    </Viewbox>
                     <TextBox Grid.Row="0"
                              Grid.Column="1"
                              Text="{Binding Name, Mode=TwoWay}" />
@@ -56,18 +59,21 @@
                         <ColumnDefinition Width="9*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid>
+                    <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*" />
                             <ColumnDefinition Width="10*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0"
-                               Grid.Column="0"
-                               Text="Image url:"/>
+                        <Viewbox StretchDirection="DownOnly"
+                                 Grid.Row="0"
+                                Grid.Column="0">
+                            <TextBlock Text="Image:"/>
+                        </Viewbox>
                         <TextBox Name="imageUrl" 
-                             Grid.Row="0"
-                             Grid.Column="1"
-                             Text="{Binding ImageUrl, Mode=TwoWay}" />
+                                 Grid.Row="0"
+                                 PlaceholderText="Url or ..."
+                                 Grid.Column="1"
+                                 Text="{Binding ImageUrl, Mode=TwoWay}" />
                     </Grid>
                     <Viewbox
                         Grid.Row="0"
@@ -82,9 +88,11 @@
                     </Viewbox>
                 </Grid>
 
-                <StackPanel Grid.Row="3">
+                <StackPanel Grid.Row="3"
+                            Margin="10">
                     <TextBlock Text="Describe your steps:" 
                                FontSize="25"
+                               HorizontalAlignment="Left"
                                FontWeight="Bold"
                                Foreground="White"/>
                     <TextBox
@@ -94,24 +102,27 @@
                         Height="150" />
                 </StackPanel>
 
-                <Grid>
+                <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="10*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0"
-                               Grid.Column="0"
-                               Text="Products:"/>
+                    <Viewbox StretchDirection="DownOnly"
+                             Grid.Row="0"
+                             Grid.Column="0">
+                        <TextBlock Text="Products:"/>
+                    </Viewbox>
                     <TextBox Grid.Row="0"
                              Grid.Column="1"
                              Text="{Binding ProductsAsString, Mode=TwoWay}" />
                 </Grid>
                 <Viewbox Grid.Row="5"
-                         DataContext="{StaticResource pageVM}">
+                         DataContext="{StaticResource pageVM}" >
                     <Button Content="Share recipe!"
                             CommandParameter="{StaticResource NewRecipe}"
                             Command="{Binding SaveCommand}"
-                            Foreground="White"/>
+                            Foreground="White"
+                            Background="Transparent"/>
                 </Viewbox>
             </ItemsControl>
         </ScrollViewer>

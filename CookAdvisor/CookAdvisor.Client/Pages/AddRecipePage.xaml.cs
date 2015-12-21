@@ -5,6 +5,7 @@
     using Windows.Media.Capture;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Media.Imaging;
+
     public sealed partial class AddRecipePage : Page
     {
         public AddRecipePage()
@@ -32,6 +33,11 @@
             {
                 this.imageView.Source = new BitmapImage(new Uri(photo.Path));
             }
+        }
+
+        private void imageView_ImageFailed(object sender, Windows.UI.Xaml.ExceptionRoutedEventArgs e)
+        {
+            this.imageView.Source = new BitmapImage(new Uri("ms-appx:///Assets/loading.png"));
         }
     }
 }

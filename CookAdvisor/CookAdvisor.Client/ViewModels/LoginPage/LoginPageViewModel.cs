@@ -25,7 +25,7 @@
             var userInfo = await this.data.LoginUser(username, password);
             if (userInfo == null)
             {
-                Notifier.ShowToast("ERROR!", "That info smells invalid.");
+                Notifier.ShowToast("ERROR!", "Something is wrong.");
                 return false;
             }
 

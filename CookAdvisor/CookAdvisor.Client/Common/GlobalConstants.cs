@@ -16,6 +16,7 @@
 
         // Recipe endpoints:
         public const string GetRecipesFormatEndpoint = "api/recipes?skip={0}&take={1}";
+        public const string GetRecipeById = "api/recipes/{0}";
         public const string AddNewRecipeEndpoint = "api/recipes";
         public const string UpdateRecipeEndpoint = "api/recipes";
         public const string DeleteRecipeByIdEndpoint = "/api/recipes/{0}";

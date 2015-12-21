@@ -22,7 +22,7 @@
                TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="#ecf0f1" />
+            <Setter Property="Foreground" Value="White" />
             <Setter Property="FontSize" Value="25"/>
         </Style>
     </Page.Resources>
@@ -89,7 +89,7 @@
                 Grid.Row="4"
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
-                Foreground="#ecf0f1"
+                Foreground="White"
                 VerticalAlignment="Top" />
         </Grid>
     </Grid>

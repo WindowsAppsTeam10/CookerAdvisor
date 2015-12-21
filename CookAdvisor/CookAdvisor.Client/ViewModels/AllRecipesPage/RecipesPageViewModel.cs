@@ -43,9 +43,9 @@
             }
         }
 
-        private async void Refresh()
+        public async void Refresh()
         {
-            var result = await this.contentManager.GetRecipes(0, 20);
+            var result = await this.contentManager.GetRecipes(0, 50);
             this.RecipeList = result.Select(m => new RecipeViewModel(m));
         }
     }

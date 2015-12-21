@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="CookAdvisor.Client.Pages.DetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CookAdvisor.Client.Pages"
+    xmlns:viewModel="using:CookAdvisor.Client.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource GlobalBackground}"
+          DataContext="{Binding RecipeToShow}" >
+        <ListBox Padding="0"
+                 Background="{StaticResource GlobalBackground}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="IsHitTestVisible" Value="False"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.Items>
+                <ListBoxItem>
+                    <Image Source="{Binding Image, Mode=TwoWay}" />
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Viewbox>
+                        <TextBlock Text="{Binding Name, Mode=TwoWay}" 
+                                   HorizontalAlignment="Center"/>
+                    </Viewbox>
+                </ListBoxItem>
+                <ListBoxItem>
+                <TextBlock Text="{Binding Description, Mode=TwoWay}"
+                           TextWrapping="Wrap"
+                           FontWeight="Normal"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <TextBlock Text="{Binding Country, Mode=TwoWay}" />
+                </ListBoxItem>
+            </ListBox.Items>
+        </ListBox>
+    </Grid>
+</Page>

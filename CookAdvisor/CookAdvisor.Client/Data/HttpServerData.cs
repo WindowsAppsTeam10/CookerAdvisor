@@ -59,6 +59,13 @@
             return false;
         }
 
+        public async Task<RecipeResponseModel> GetRecipe(int id)
+        {
+            var response = await this.remoteClient.Get(string.Format(GlobalConstants.GetRecipeById, id));
+
+            return ParseResponse<RecipeResponseModel>(response);
+        }
+
         private static T ParseResponse<T>(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.Ok)
