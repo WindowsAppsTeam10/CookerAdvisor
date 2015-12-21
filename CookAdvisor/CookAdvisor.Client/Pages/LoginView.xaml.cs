@@ -23,6 +23,7 @@
 
         private void LoginUser(object sender, RoutedEventArgs e)
         {
+            this.ProgressRing.IsActive = true;
             var user = this.ViewModel.LoginModel;
             user.Email = this.emailField.UserInput;
             user.Password = this.passwordField.UserInput;
@@ -32,6 +33,7 @@
         private async void Login(string username, string password)
         {
             var canLogin = await this.ViewModel.LoginUserSuccessful(username, password);
+            this.ProgressRing.IsActive = false;
             if (canLogin)
             {
                 this.Frame.Navigate(typeof(RecipesView));

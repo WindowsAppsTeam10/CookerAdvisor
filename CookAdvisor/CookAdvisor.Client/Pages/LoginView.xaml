@@ -42,9 +42,17 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Cook Advisor." 
-                       Grid.Row="0"
-                       Grid.ColumnSpan="2"
-                       Style="{StaticResource AppTitleStyle}" />
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource AppTitleStyle}" />
+
+        <ProgressRing Name="ProgressRing"
+                      Grid.Row="0"
+                      Grid.ColumnSpan="2"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Top"
+                      Margin="10"
+                      IsActive="False" />
 
         <my:LabeledTextbox x:Name="emailField"
                            Grid.Row="1"
@@ -66,23 +74,24 @@
                            TextColor="White"
                            Label="Password" />
 
-        <ItemsControl
-                Grid.Row="3"
-                Grid.Column="1">
+        <ItemsControl Grid.Row="3"
+                      Grid.Column="1">
+            
             <Button Content="Get Cooking!"
-                Margin="10"
-                HorizontalAlignment="Stretch"
-                Foreground="#ecf0f1"
-                VerticalAlignment="Top"
-                CommandParameter="{Binding UserLoginViewModel}"
-                Click="LoginUser"/>
+                    Margin="10"
+                    HorizontalAlignment="Stretch"
+                    Foreground="#ecf0f1"
+                    VerticalAlignment="Top"
+                    CommandParameter="{Binding UserLoginViewModel}"
+                    Click="LoginUser"/>
 
             <Button Content="No account?"
-                Margin="10, 50, 10, 10"
-                HorizontalAlignment="Right"
-                Background="Transparent"
-                Foreground="Yellow"
-                Click="RedirectToRegistration"/>
+                    Margin="10, 50, 10, 10"
+                    HorizontalAlignment="Right"
+                    Background="Transparent"
+                    Foreground="Yellow"
+                    FontWeight="Bold"
+                    Click="RedirectToRegistration"/>
         </ItemsControl>
     </Grid>
 </Page>
